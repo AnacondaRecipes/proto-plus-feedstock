@@ -1,5 +1,5 @@
 {% set name = "proto-plus" %}
-{% set version = "1.18.1" %}
+{% set version = "1.19.0" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/proto-plus-{{ version }}.tar.gz
-  sha256: cfc45474c7eda0fe3c4b9eca2542124f2a0ff5543242bec61e8d08bce0f5bd48
+  sha256: ce6695ce804383ad6f392c4bb1874c323896290a1f656560de36416ba832d91e
 
 build:
   number: 0
@@ -19,6 +19,8 @@ requirements:
   host:
     - pip
     - python
+    - wheel
+    - setuptools
   run:
     - protobuf >=3.12.0
     - python
@@ -36,7 +38,10 @@ about:
   home: https://github.com/googleapis/proto-plus-python.git
   summary: Beautiful, Pythonic protocol buffers.
   license: Apache-2.0
+  license_family: Apache
   license_file: LICENSE
+  dev_url: https://github.com/googleapis/proto-plus-python
+  doc_url: https://proto-plus-python.readthedocs.io/en/latest/
 
 extra:
   recipe-maintainers:
