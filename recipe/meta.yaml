@@ -1,6 +1,6 @@
 {% set name = "proto-plus" %}
-{% set version = "1.19.9" %}
-
+{% set version = "1.22.1" %}
+{% set sha256 = "6c7dfd122dfef8019ff654746be4f5b1d9c80bba787fe9611b508dd88be3a2fa" %}
 
 package:
   name: {{ name|lower }}
@@ -8,12 +8,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/proto-plus-{{ version }}.tar.gz
-  sha256: 4ca4055f7c5c1a2239ac7a12770a76a16269f58d3f01631523c20fc81dbb14a7
+  sha256: {{ sha256 }}
 
 build:
   number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  # noarch: python
+  script: python -m pip install . -vv --no-deps
 
 requirements:
   host:
@@ -22,26 +22,30 @@ requirements:
     - wheel
     - setuptools
   run:
-    - protobuf >=3.19.0
-    - python >=3.6
+    - python
+    - protobuf >=3.19.0,<5.0.0dev
 
 test:
+  requires:
+    - pip
   imports:
     - proto
     - proto.marshal
   commands:
     - pip check
-  requires:
-    - pip
-    - python <3.10
 
 about:
-  home: https://github.com/googleapis/proto-plus-python.git
+  home: https://github.com/googleapis/proto-plus-python
   summary: Beautiful, Pythonic protocol buffers.
+  description: |
+    This is a wrapper around protocol buffers. Protocol buffers is a specification
+    format for APIs, such as those inside Google. This library provides protocol
+    buffer message classes and objects that largely behave like native Python types.
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
   dev_url: https://github.com/googleapis/proto-plus-python
+  doc_source_url: https://github.com/googleapis/proto-plus-python/tree/main/docs
   doc_url: https://proto-plus-python.readthedocs.io/en/latest/
 
 extra:
