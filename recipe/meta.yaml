@@ -1,6 +1,6 @@
 {% set name = "proto-plus" %}
-{% set version = "1.22.1" %}
-{% set sha256 = "6c7dfd122dfef8019ff654746be4f5b1d9c80bba787fe9611b508dd88be3a2fa" %}
+{% set version = "1.24.0" %}
+{% set sha256 = "30b72a5ecafe4406b0d339db35b56c4059064e69227b8c3bda7462397f966445" %}
 
 package:
   name: {{ name|lower }}
@@ -12,8 +12,8 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<36]
-  script: python -m pip install . -vv --no-deps
+  skip: true  # [py<37]
+  script: python -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
@@ -23,7 +23,7 @@ requirements:
     - setuptools
   run:
     - python
-    - protobuf >=3.19.0,<5.0.0dev
+    - protobuf >=3.19.0,<6.0.0dev
 
 test:
   requires:
@@ -45,8 +45,7 @@ about:
   license_family: Apache
   license_file: LICENSE
   dev_url: https://github.com/googleapis/proto-plus-python
-  doc_source_url: https://github.com/googleapis/proto-plus-python/tree/main/docs
-  doc_url: https://proto-plus-python.readthedocs.io/en/latest/
+  doc_url: https://proto-plus-python.readthedocs.io
 
 extra:
   recipe-maintainers:
