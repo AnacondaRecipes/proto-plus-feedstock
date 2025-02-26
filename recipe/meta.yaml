@@ -23,6 +23,8 @@ requirements:
   run:
     - python
     - protobuf >=3.19.0,<6.0.0
+  run_constrained:
+    - google-api-core >=1.31.5
 
 test:
   source_files:
@@ -36,8 +38,8 @@ test:
   requires:
     - pip
     - pytest
-    - google-api-core >=1.31.5
     - pytz
+    - google-api-core >=1.31.5
 
 about:
   home: https://github.com/googleapis/proto-plus-python
